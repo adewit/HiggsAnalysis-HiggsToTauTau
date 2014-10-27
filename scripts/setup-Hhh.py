@@ -18,8 +18,8 @@ cats1 = OptionGroup(parser, "Hhh EVENT CATEGORIES", "Event categories to be pick
 cats1.add_option("--Hhh-categories-ee", dest="ee_Hhh_categories", default="0 1 2 3 4", type="string", help="List of ee event categories. [Default: \"0 1 2 3 4\"]")
 cats1.add_option("--Hhh-categories-mm", dest="mm_Hhh_categories", default="0 1 2 3 4", type="string", help="List of mm event categories. [Default: \"0 1 2 3 4\"]")
 cats1.add_option("--Hhh-categories-em", dest="em_Hhh_categories", default="0 1 2 3 4", type="string", help="List of em event categories. [Default: \"0 1 2 3 4\"]")
-cats1.add_option("--Hhh-categories-mt", dest="mt_Hhh_categories", default="0 1 2 3 4", type="string", help="List of mt event categories. [Default: \"0 1 2 3 4\"]")
-cats1.add_option("--Hhh-categories-et", dest="et_Hhh_categories", default="0 1 2 3 4", type="string", help="List of et event categories. [Default: \"0 1 2 3 4\"]")
+cats1.add_option("--Hhh-categories-mt", dest="mt_Hhh_categories", default="0 1 2 3 4 10 11 12 13 14", type="string", help="List of mt event categories. [Default: \"0 1 2 3 4\"]")
+cats1.add_option("--Hhh-categories-et", dest="et_Hhh_categories", default="0 1 2 3 4 10 11 12 13 14", type="string", help="List of et event categories. [Default: \"0 1 2 3 4\"]")
 cats1.add_option("--Hhh-categories-tt", dest="tt_Hhh_categories", default="0 1 2 3 4", type="string", help="List of tt event categories. [Default: \"0 1 2 3 4\"]")
 parser.add_option_group(cats1)
 
@@ -102,19 +102,29 @@ directories_Hhh = {
     '4'  : ['1jet1tag'  , '1jet1tag-em'  ],
     },    
     'et' : {
-    '0'  : ['2jet0tag', '2jet0tag-et'],
-    '1'  : ['2jet1tag'  , '2jet1tag-et'  ],
-    '2'  : ['2jet2tag'  , '2jet2tag-et'  ],
-    '3'  : ['1jet0tag'  , '1jet0tag-et'  ],
-    '4'  : ['1jet1tag'  , '1jet1tag-et'  ],
+    '0'  : ['2jet1tag_slice0', '2jet1tag_slice0-et'],
+    '1'  : ['2jet1tag_slice1'  , '2jet1tag_slice1-et'  ],
+    '2'  : ['2jet1tag_slice2'  , '2jet1tag_slice2-et'  ],
+    '3'  : ['2jet1tag_slice3'  , '2jet1tag_slice3-et'  ],
+    '4'  : ['2jet1tag_slice4'  , '2jet1tag_slice4-et'  ],
+    '10'  : ['2jet2tag_slice0', '2jet2tag_slice0-et'],
+    '11'  : ['2jet2tag_slice1'  , '2jet2tag_slice1-et'  ],
+    '12'  : ['2jet2tag_slice2'  , '2jet2tag_slice2-et'  ],
+    '13'  : ['2jet2tag_slice3'  , '2jet2tag_slice3-et'  ],
+    '14'  : ['2jet2tag_slice4'  , '2jet2tag_slice4-et'  ],
     },
     'mt' : {
-    '0'  : ['2jet0tag', '2jet0tag-mt'],
-    '1'  : ['2jet1tag'  , '2jet1tag-mt'  ],
-    '2'  : ['2jet2tag'  , '2jet2tag-mt'  ],
-    '3'  : ['1jet0tag'  , '1jet0tag-mt'  ],
-    '4'  : ['1jet1tag'  , '1jet1tag-mt'  ],
-    },
+    '0'  : ['2jet1tag_slice0', '2jet1tag_slice0-mt'],
+    '1'  : ['2jet1tag_slice1'  , '2jet1tag_slice1-mt'  ],
+    '2'  : ['2jet1tag_slice2'  , '2jet1tag_slice2-mt'  ],
+    '3'  : ['2jet1tag_slice3'  , '2jet1tag_slice3-mt'  ],
+    '4'  : ['2jet1tag_slice4'  , '2jet1tag_slice4-mt'  ],
+    '10'  : ['2jet2tag_slice0', '2jet2tag_slice0-mt'],
+    '11'  : ['2jet2tag_slice1'  , '2jet2tag_slice1-mt'  ],
+    '12'  : ['2jet2tag_slice2'  , '2jet2tag_slice2-mt'  ],
+    '13'  : ['2jet2tag_slice3'  , '2jet2tag_slice3-mt'  ],
+    '14'  : ['2jet2tag_slice4'  , '2jet2tag_slice4-mt'  ],
+       },
     'tt' : {
     '0'  : ['2jet0tag', '2jet0tag-tt'],
     '1'  : ['2jet1tag'  , '2jet1tag-tt'  ],
