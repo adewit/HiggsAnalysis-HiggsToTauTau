@@ -55,8 +55,8 @@ std::string legendEntry(const std::string& channel){
   std::string title;
   if(channel==std::string("em"        )) title = std::string("e#mu");
   if(channel==std::string("et"        )) title = std::string("e#tau_{h}");
-  if(channel==std::string("mt"        )) title = std::string("#mu#tau_{h}");
-  if(channel==std::string("tt"        )) title = std::string("#tau_{h}#tau_{h}");
+  if(channel==std::string("svfit-plain-mt"        )) title = std::string("plain (m_{H})");
+  if(channel==std::string("svfit-bbb-mt"        )) title = std::string("bbb (m_{H})");
   if(channel==std::string("mm"        )) title = std::string("#mu#mu");
   if(channel==std::string("ee"        )) title = std::string("ee");
   if(channel==std::string("vhtt"      )) title = std::string("VH#rightarrow#tau#tau");
@@ -80,7 +80,7 @@ std::string legendEntry(const std::string& channel){
   return title;
 }
 
-void compareLimits(const char* filename, const char* channelstr, bool expected, bool observed, const char* type, double minimum=0., double maximum=20., bool log=false, const char* label="#scale[1.5]{CMS}   h,H,A#rightarrow#tau#tau                     19.7 fb^{-1} (8 TeV) + 4.9 fb^{-1} (7 TeV)", bool legendOnRight=true, bool legendOnTop=true, bool ggH=true)
+void compareLimits(const char* filename, const char* channelstr, bool expected, bool observed, const char* type, double minimum=0., double maximum=20., bool log=false, const char* label="#scale[1.5]{CMS}   H#rightarrow#tau#tau  19.7 fb^{-1} (8 TeV) ", bool legendOnRight=true, bool legendOnTop=true, bool ggH=true)
 {
   SetStyle();
 
@@ -93,8 +93,8 @@ void compareLimits(const char* filename, const char* channelstr, bool expected, 
   colors["btag"       ] = kRed; 
   colors["nobtag"     ] = kBlue; 
   colors["em"         ] = kBlue;
-  colors["et"         ] = kRed;
-  colors["mt"         ] = kGreen;
+  colors["svfit-plain-mt"         ] = kRed;
+  colors["svfit-bbb-mt"         ] = kBlue;
   colors["mm"         ] = kMagenta;
   colors["ee"         ] = kCyan;
   colors["tt"         ] = kMagenta+3;
@@ -167,7 +167,7 @@ void compareLimits(const char* filename, const char* channelstr, bool expected, 
 	x_title = std::string("m_{A} [GeV]");
       }
       else if(std::string(type) == std::string("mssm-xsec")){
-	x_title = std::string("m_{#phi} [GeV]");
+	x_title = std::string("m_{H} [GeV]");
       }
       else{
 	x_title = std::string("m_{H} [GeV]");
@@ -196,7 +196,7 @@ void compareLimits(const char* filename, const char* channelstr, bool expected, 
       // format y-axis
       std::string y_title;
       if( std::string(type) == std::string("mssm-xsec") ){
-	if(ggH) y_title = std::string("95% CL limit on #sigma(gg#rightarrow#phi)#timesBR [pb]");
+	if(ggH) y_title = std::string("95% CL limit on #sigma(gg#rightarrowH#rightarrowhh)#timesBR [pb]");
 	else y_title = std::string("95% CL limit on #sigma(gg#rightarrowbb#phi)#timesBR [pb]");
       }
       else if(  std::string(type) == std::string("mssm-tanb")  ){
@@ -297,7 +297,7 @@ void compareLimits(const char* filename, const char* channelstr, bool expected, 
     extra->SetTextSize  (0.04 );
     extra->SetTextColor (   1 );
     extra->SetTextFont  (  62 );
-    if(ggH) extra->AddText("gg#phi");
+    if(ggH) extra->AddText("A#rightarrowZh,bbH profiled");
     else extra->AddText("bb#phi");
     extra->Draw();
   }
@@ -335,7 +335,7 @@ void compareLimits(const char* filename, const char* channelstr, bool expected, 
     leg1->SetFillColor (kWhite);
     leg1->SetHeader( "#bf{observed}" );
     for(unsigned int i=0; i<hobs.size(); ++i){
-      leg1->AddEntry( hobs[i] , channel(channels[i]) ? legendEntry(channels[i]).c_str() : legendEntry(channels[i]).append("-Channel").c_str(),  "PL" );
+      leg1->AddEntry( hobs[i] , channel(channels[i]) ? legendEntry(channels[i]).c_str() : legendEntry(channels[i]).c_str(),  "PL" );
     }
     leg1->Draw("same");
     firstLeg=false;
@@ -371,7 +371,7 @@ void compareLimits(const char* filename, const char* channelstr, bool expected, 
     leg0->SetFillColor (kWhite);
     leg0->SetHeader( "#bf{expected}" );
     for(unsigned int i=0; i<hexp.size(); ++i){
-      leg0->AddEntry( hexp[i] , channel(channels[i]) ? legendEntry(channels[i]).c_str() : legendEntry(channels[i]).append("-Channel").c_str(),  "PL" );
+      leg0->AddEntry( hexp[i] , channel(channels[i]) ? legendEntry(channels[i]).c_str() : legendEntry(channels[i]).c_str(),  "PL" );
     }
     leg0->Draw("same");
     firstLeg=false;
