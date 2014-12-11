@@ -33,7 +33,6 @@ class twohdm_xsec_tools():
         Spline = ROOT.TGraph()
         i=0
         while tree.GetEntry(i):
-            i += 1
             if twoHDMtanb[0]==tan_beta :
                 if branch=="" :
                     Spline.SetPoint(k, float(all_parameter1[0]), float(searched_param[0]))
@@ -41,6 +40,7 @@ class twohdm_xsec_tools():
                     test.GetBranch().GetEntry(i)
                     Spline.SetPoint(k, float(all_parameter1[0]), float(test.GetValue()))
                 k=k+1
+            i += 1
         Spline.Sort()
         return Spline.Eval(float(parameter1))
 
