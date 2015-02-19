@@ -167,6 +167,8 @@ class ModelParams_BASE:
         if self.ana_type=='Hhh' :
             if channel=='ggHTohhTo2Tau2B' :
                 return str(query['higgses'][higgs][brname[channel[2:]]]*query['higgses']['h'][brname['bb']]*query['higgses']['h'][brname[decay[1:]]]*2) #factor 2: bbtautau or tautaubb
+            elif channel=='AZh' :
+                return str(query['higgses'][higgs][brname[channel]]*query['higgses']['h'][brname['tt']]*0.06729) #BR(Z->ll)=0.03363(ee)+0.03366(mumu) (tautau is not considered)
             elif channel=='ggAToZhToLLBB' :
                 return str(query['higgses'][higgs][brname[channel[2:]]]*query['higgses']['h'][brname['bb']]*0.10099) #BR(Z->LL)=0.03363(ee)+0.03366(mumu)+0.03370(tautau)
             elif channel=='ggAToZhToLLTauTau' :
@@ -175,6 +177,11 @@ class ModelParams_BASE:
                 return query['higgses'][higgs][brname[decay[1:]]]
         elif self.ana_type=='AZh':
             if channel=='AZh' :
+                return str(query['higgses'][higgs][brname[channel]]*query['higgses']['h'][brname['tt']]*0.06729) #BR(Z->ll)=0.03363(ee)+0.03366(mumu) (tautau is not considered)
+        elif self.ana_type=='HhhAndAZh' :
+            if channel=='ggHTohhTo2Tau2B' :
+                return str(query['higgses'][higgs][brname[channel[2:]]]*query['higgses']['h'][brname['bb']]*query['higgses']['h'][brname[decay[1:]]]*2) #factor 2: bbtautau or tautaubb
+            elif channel=='AZh' :
                 return str(query['higgses'][higgs][brname[channel]]*query['higgses']['h'][brname['tt']]*0.06729) #BR(Z->ll)=0.03363(ee)+0.03366(mumu) (tautau is not considered)
         elif self.ana_type=='Htaunu':
             if 'CMS_ttHpHp_signal' in channel :
