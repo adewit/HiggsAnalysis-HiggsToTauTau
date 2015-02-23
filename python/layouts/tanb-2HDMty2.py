@@ -7,7 +7,7 @@ layout = cms.PSet(
     #dataset = cms.string("#scale[1.5]{CMS} Preliminary, h,H,A#rightarrow#tau#tau, 19.7 fb^{-1} (8 TeV) + 4.9 fb^{-1} (7 TeV)"),
     #dataset = cms.string("#scale[1.5]{CMS}   h,H,A#rightarrow#tau#tau                                           18.3 fb^{-1} (8 TeV)"),
     #dataset = cms.string("#scale[1.5]{CMS}   h,H,A#rightarrow#tau#tau                                           19.7 fb^{-1} (8 TeV)"),
-    dataset = cms.string("h,H,A#rightarrow#tau#tau                                      19.7 fb^{-1} (8 TeV) + 4.9 fb^{-1} (7 TeV)"),
+    dataset = cms.string("H#rightarrowhh#rightarrow#tau#taubb + A#rightarrowZh#rightarrowll#tau#tau    19.7 fb^{-1} (8 TeV)"),
     ## x-axis title
     xaxis = cms.string("cos(#beta-#alpha)"),
     ## y-axis title
@@ -31,7 +31,7 @@ layout = cms.PSet(
     ## define verbosity level
     verbosity = cms.uint32(3),
     ## define output label
-    outputLabel = cms.string("mA-tanb") ,
+    outputLabel = cms.string("mA-tanb-cmb") ,
     ## define masspoints for limit plot
     masspoints = cms.vdouble(
    -1
@@ -61,13 +61,13 @@ layout = cms.PSet(
     ## is this MSSMvsSM?
     MSSMvsSM = cms.bool(False),
     ## plot in Brazilian colors?
-    Brazilian = cms.bool(True),
+    Brazilian = cms.bool(False),
     ## plot transparent?
     transparent = cms.bool(True),
     ## print the 2-sigma band
     outerband = cms.bool(True),
     ## plot expected only
-    expectedOnly = cms.bool(False),
+    expectedOnly = cms.bool(True),
     ## print constraints from mH=125GeV
     higgs125 = cms.bool(True),
     ## add arXiv-1211-6956 (ATLAS) to plot

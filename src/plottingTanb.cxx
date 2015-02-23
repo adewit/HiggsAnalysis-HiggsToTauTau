@@ -254,7 +254,7 @@ plottingTanb(TCanvas& canv, TH2D* h2d, std::vector<TGraph*> minus2sigma, std::ve
     else if(theory=="MSSM light-stau scenario") theory1= new TPaveText(0.51, 0.20, 0.91, 0.26, "NDC");
     else if(theory=="MSSM low-tan#beta-high scenario") theory1 = new TPaveText(0.45, 0.20, 0.91, 0.26, "NDC");
     else if(theory=="2HDM type-I") theory1 = new TPaveText(0.65, 0.20, 0.91, 0.26, "NDC");
-    else if(theory=="2HDM type-II") theory1 = new TPaveText(0.65, 0.20, 0.91, 0.26, "NDC");
+    else if(theory=="2HDM type-II") theory1 = new TPaveText(0.65, 0.50, 0.91, 0.56, "NDC");
     else theory1= new TPaveText(0.51, 0.20, 0.91, 0.26, "NDC");
   }
   theory1->SetBorderSize(   0 );
@@ -286,7 +286,7 @@ plottingTanb(TCanvas& canv, TH2D* h2d, std::vector<TGraph*> minus2sigma, std::ve
       if(theory=="MSSM low-m_{H} scenario") leg = new TLegend(0.175, 0.155, 0.62, 0.30);
       else if(theory=="MSSM low-tan#beta-high scenario") leg = new TLegend(0.58, 0.59, 0.90, 0.89);
       else if(theory=="MSSM light-stop scenario") leg = new TLegend(0.28, (!higgsBands.empty() || !comparisons.empty()) ? 0.57 :0.69, (!higgsBands.empty() || !comparisons.empty()) ? 0.53: 0.56, 0.89);
-      else if(theory=="2HDM type-I" || theory=="2HDM type-II") leg = new TLegend(0.18, 0.19, 0.45, 0.49);
+      else if(theory=="2HDM type-I" || theory=="2HDM type-II") leg = new TLegend(0.48, 0.59, 0.75, 0.89);
       else leg = new TLegend(0.23, (!higgsBands.empty() || !comparisons.empty()) ? 0.57 : 0.69, (!higgsBands.empty() || !comparisons.empty()) ? 0.47: 0.50, 0.89);
     }
   }
