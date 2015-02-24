@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
   // Channel-specific background configuration
   vector<BkgInfo> bkgs;
   vector<string> total_bkg;
-  if (channel == "et" || channel == "mt" || channel == "tt") {
+  if (channel == "et" || channel == "mt" ) {
     bkgs = {
       BkgInfo("$\\cPZ\\rightarrow \\Pgt\\Pgt$",       {"ZTT"}),
       BkgInfo("QCD",                                  {"QCD"}),
@@ -134,6 +134,18 @@ int main(int argc, char* argv[]) {
     };
     total_bkg = {"ZTT", "QCD", "W", "ZL", "ZJ", "TT", "VV"};
   }
+  if (channel == "tt") {
+    bkgs = {
+      BkgInfo("$\\cPZ\\rightarrow \\Pgt\\Pgt$",       {"ZTT"}),
+      BkgInfo("QCD",                                  {"QCD"}),
+      BkgInfo("$\\PW$+jets",                          {"W"}),
+      BkgInfo("$\\cPZ$+jets (l/jet faking $\\Pgt$)",  {"ZLL"}),
+      BkgInfo("$\\cPqt\\cPaqt$",                      {"TT"}),
+      BkgInfo("Di-bosons + single top",               {"VV"})
+    };
+    total_bkg = {"ZTT", "QCD", "W", "ZLL", "TT", "VV"};
+  }
+
   if (channel == "em") {
     bkgs = {
       BkgInfo("$\\cPZ\\rightarrow \\Pgt\\Pgt$",    {"Ztt"}),
@@ -166,8 +178,8 @@ int main(int argc, char* argv[]) {
 
   cmb.ForEachSyst(boost::bind(ch::SetFromBinName<ch::Systematic>, _1,
                              "$ANALYSIS_$CHANNEL_$BINID_$ERA"));
-  //cmb.ForEachObs(boost::bind(ch::SetFromBinName<ch::Observation>, _1,
-   //                          "$ANALYSIS_$CHANNEL_$BINID_$ERA"));
+ cmb.ForEachObs(boost::bind(ch::SetFromBinName<ch::Observation>, _1,
+                             "$ANALYSIS_$CHANNEL_$BINID_$ERA"));
   cmb.ForEachProc(boost::bind(ch::SetFromBinName<ch::Process>, _1,
                               "$ANALYSIS_$CHANNEL_$BINID_$ERA"));
 
@@ -205,7 +217,7 @@ int main(int argc, char* argv[]) {
     ch::CombineHarvester tmp_cmb =
         std::move(cmb.cp().era({col_info[i].era}).bin_id(col_info[i].cats_int));
     // tmp_cmb.cp().PrintAll();
-   // data_yields[i] = tmp_cmb.cp().GetObservedRate(); This needs to be commented back in after unblinding
+    data_yields[i] = tmp_cmb.cp().GetObservedRate(); //This needs to be commented back in after unblinding
     sig_yields[i] = tmp_cmb.cp().process(signal_procs).GetRate();
     sig_errors[i] = postfit ?
         tmp_cmb.cp().process(signal_procs).GetUncertainty(fitresult, samples) :

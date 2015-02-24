@@ -22,22 +22,22 @@
 tanb=2
 mass=300
 input=data/hhh
-postfit="false"
+postfit="true"
 
 ./bin/MSSMYieldTableHhh --channel=mt --header="$\\Pgm\\Pgt_{h}$ channel" \
   --columns "2jet0tag:0" "2jet1tag:1" "2jet2tag:2" --eras "8TeV:19712" \
   -d $input/$mass/tmp_2.00.txt -s $input/$mass/htt_mt_*.txt \
-  -f $input/$mass/out/mlfit.root:fit_b \
+  -f $input/$mass/out/mlfit.root:fit_s \
   --signal_mass=$mass --tanb=$tanb --postfit=$postfit &> mt_yields.tex
 
 ./bin/MSSMYieldTableHhh --channel=et --header="$\\Pe\\Pgt_{h}$ channel" \
   --columns "2jet0tag:0" "2jet1tag:1" "2jet2tag:2" --eras "8TeV:19712" \
   -d $input/$mass/tmp_2.00.txt -s $input/$mass/htt_et_*.txt \
-  -f $input/$mass/out/mlfit.root:fit_b \
+  -f $input/$mass/out/mlfit.root:fit_s \
   --signal_mass=$mass --tanb=$tanb --postfit=$postfit &> et_yields.tex
 
-#./bin/MSSMYieldTable --channel=tt --header="$\\Pgt_{h}\\Pgt_{h}$ channel" \
-#  --columns "2jet0tag:0" "2jet1tag:1" "2jet2tag:2" --eras "8TeV:19712" \
-#  -d $input/$mass/tmp_2.00.txt -s $input/$mass/htt_tt_*.txt \
-#  -f $input/$mass/out/mlfit.root:fit_s \
-#  --signal_mass=$mass --tanb=$tanb --postfit=$postfit &> tt_yields.tex
+./bin/MSSMYieldTableHhh --channel=tt --header="$\\Pgt_{h}\\Pgt_{h}$ channel" \
+  --columns "2jet0tag:0" "2jet1tag:1" "2jet2tag:2" --eras "8TeV:19712" \
+  -d $input/$mass/tmp_2.00.txt -s $input/$mass/htt_tt_*.txt \
+  -f $input/$mass/out/mlfit.root:fit_s \
+  --signal_mass=$mass --tanb=$tanb --postfit=$postfit &> tt_yields.tex
