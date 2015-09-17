@@ -49,7 +49,7 @@ parser.add_option("--SMHasSignal", dest="SMHasSignal", default=False, action="st
 (options, args) = parser.parse_args()
 if len(args) < 1 :
     if options.model=="2HDM" :
-        args.append("0.0_1.0:0.1")
+        args.append("0.0_1.0:0.02")
     else : 
         args.append("260_350:10")
 

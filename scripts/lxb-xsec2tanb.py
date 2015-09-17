@@ -135,7 +135,7 @@ def submit(name, key, masses) :
             else :
                 os.system('touch {PWD}/log/{LOG}'.format(
                     PWD=os.getcwd(), LOG=script_file_name[script_file_name.rfind('/')+1:].replace('.sh', '.log')))
-                submit_script.write('bsub -q 8nh -oo {BSUBARGS} {PWD}/log/{LOG} {PWD}/{FILE}\n'.format(
+                submit_script.write('bsub -q 1nh -oo {BSUBARGS} {PWD}/log/{LOG} {PWD}/{FILE}\n'.format(
                     BSUBARGS=bsubargs, LOG=script_file_name[script_file_name.rfind('/')+1:].replace('.sh', '.log'), PWD=os.getcwd(), FILE=script_file_name))
     os.system('chmod a+x %s' % submit_name)
 

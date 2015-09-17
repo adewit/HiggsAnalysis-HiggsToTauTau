@@ -1147,7 +1147,7 @@ for directory in args :
                         ["combine -M Asymptotic -n .tanb{tanb} --run both -C {CL} {minuit} {prefit} --minimizerStrategy {strategy} -m {mass} {user} {wsp}".format(
                         CL=options.confidenceLevel, minuit=minuitopt, prefit=prefitopt,strategy=options.strategy,mass=mass, wsp=wsp, user=options.userOpt, tanb=tanb_string),
                          #this replace(".0","") very ugly but needed for 2HDM because e.g. combine stores the -M Asymptotic output for mass=1.0 under higgsCombine.tanb{tanb}.Asymptotic.mH1.root and NOT higgsCombine.tanb{tanb}.Asymptotic.mH1.0.root therefore the renaming gets screwed u
-                         "mv higgsCombine.tanb{tanb}.Asymptotic.mH{mass}.root point_{tanb}".format(mass=mass.replace(".0",""), tanb=tanb_string)
+                           "mv higgsCombine.tanb{tanb}.Asymptotic.mH{mass}.root point_{tanb}".format(mass=mass, tanb=tanb_string)
                          ]
                         )
         if options.tanbMultiCore == -1:

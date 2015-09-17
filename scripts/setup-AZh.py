@@ -22,7 +22,7 @@ parser.add_option_group(cats1)
 ## check number of arguments; in case print usage
 (options, args) = parser.parse_args()
 if options.model=='2HDM' :
-    args.append("-1_-0.1:0.1")
+    args.append("-1_0:0.02")
 
 import os
 from HiggsAnalysis.HiggsToTauTau.utils import parseArgs
